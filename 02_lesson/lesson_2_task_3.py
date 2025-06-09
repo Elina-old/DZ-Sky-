@@ -1,9 +1,9 @@
 import math
 
 
-def square(items):
-    return math.ceil(items * items)
+def square(side):
+    return math.ceil(side * side)
 
 
-num_items = int(input("сторона квадрата: "))
-print(f"площадь квадрата: {square(num_items)}")
+num_side = int(input("сторона квадрата: "))
+print(f"площадь квадрата: {square(num_side)}")

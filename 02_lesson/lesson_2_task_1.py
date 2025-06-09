@@ -1,7 +1,8 @@
 lst = ['🍇', '🍑', '🍐', '🍊', '🍌', '🍎']
 
 grapes = lst[0]
-print(grapes)
+grapes = lst[-1]
 
-apple = lst[+5]
-print(apple)
+
+print(lst[0])
+print(lst[-1])
