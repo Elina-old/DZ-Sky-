@@ -12,13 +12,3 @@ class User:
 
     def print_full_name(self):
         print(f'{self.first_name}-{self.last_name}')
-
-
-user = User("Элина", "Татулян")
-#last_name = User("Татулян")
-
-user.print_first_name()
-first_name = user.first_name
-#print(first_name)
-user.print_last_name()
-user.print_full_name()
