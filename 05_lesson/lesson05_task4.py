@@ -28,3 +28,4 @@ search_box.click()
 sleep(5)
 
 print('[alt="Fork me on GitHub"]')
+driver.quit()
