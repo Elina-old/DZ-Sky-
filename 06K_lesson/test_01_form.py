@@ -60,8 +60,6 @@ def test_fill_form(browser):
     browser.execute_script('arguments[0].scrollIntoView();', element)
     element.click()
 
-
-def test_click_and_verify_alert(browser):
     WebDriverWait(browser, 30).until(EC.presence_of_element_located((By.ID, "zip-code")))
 
     zip_code_element = browser.find_element(By.ID, "zip-code")
