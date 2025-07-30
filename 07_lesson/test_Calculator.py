@@ -7,7 +7,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-from ClassPage_calc import CalcPage
+from Page_CL_calc import CalcPage
 
 @pytest.fixture(scope="module")
 def driver():
@@ -17,10 +17,10 @@ def driver():
         yield driver
 
 def test_calculator(driver):
-    calc_page = CalcPage(driver)
+    page_cl_calc = CalcPage(driver)
     driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html")
-    calc_page.search_box()
-    calc_page.open_calculator()
+    page_cl_calc.search_box()
+    page_cl_calc.open_calculator()
 
 
 

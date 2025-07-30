@@ -20,17 +20,14 @@ class Basket:
         self.driver = driver
 
 
-
-    def string(self):
+    def clic(self):
         self.driver.find_element(By.CSS_SELECTOR, "#add-to-cart-sauce-labs-backpack").click()
-
         self.driver.find_element(By.CSS_SELECTOR, "[id='add-to-cart-sauce-labs-bolt-t-shirt']").click()
-
         self.driver.find_element(By.CSS_SELECTOR, "[id='add-to-cart-sauce-labs-onesie']").click()
-
-
-    def cart_link(self):
         self.driver.find_element(By.CSS_SELECTOR, "[class='shopping_cart_link']").click()
+
+
+
 
 
 

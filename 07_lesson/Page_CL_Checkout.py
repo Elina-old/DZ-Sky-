@@ -20,5 +20,9 @@ class Checkout:
         self.driver = driver
 
 
+
     def check(self):
         self.driver.find_element(By.CSS_SELECTOR, "[id='checkout']").click()
+
+
+
