@@ -49,8 +49,6 @@ class CalcPage:
             EC.text_to_be_present_in_element((By.CSS_SELECTOR, ".screen"), '15')
         )
 
-        result = self.driver.find_element(By.CSS_SELECTOR, ".screen").text
-        assert int(result) == 15
 
 
 

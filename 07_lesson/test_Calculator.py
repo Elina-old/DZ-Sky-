@@ -22,5 +22,7 @@ def test_calculator(driver):
     page_cl_calc.search_box()
     page_cl_calc.open_calculator()
 
+    result = driver.find_element(By.CSS_SELECTOR, ".screen").text
+    assert int(result) == 15
 
 
