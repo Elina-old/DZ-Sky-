@@ -8,16 +8,14 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core import driver
 
 
-
-@pytest.fixture()
-def driver():
+@pytest.fixture(scope="module")
+def browser():
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     driver.implicitly_wait(10)
     driver.maximize_window()
     yield driver
 
 class CalcPage:
-
     def __init__(self, driver):
         self.driver = driver
 
@@ -44,10 +42,11 @@ class CalcPage:
         self.driver.find_element(By.XPATH, '//span[text()="8"]').click()
 
         self.driver.find_element(By.XPATH, '//span[text()="="]').click()
-
         WebDriverWait(self.driver, 50).until(
-            EC.text_to_be_present_in_element((By.CSS_SELECTOR, ".screen"), '15')
-        )
+            EC.text_to_be_present_in_element((By.CSS_SELECTOR, ".screen"), '15'))
+
+        result = self.driver.find_element(By.CSS_SELECTOR, ".screen").text
+        assert int(result) == 15
 
 
 
