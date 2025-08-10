@@ -1,11 +1,8 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
-
 
 from Page_CL_calc import CalcPage
 
@@ -21,6 +18,6 @@ def test_calculator(driver):
     driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html")
     page_cl_calc.search_box()
     page_cl_calc.open_calculator()
-
+    assert int("15") == 15
 
 

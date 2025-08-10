@@ -13,15 +13,13 @@ def browser():
     driver.maximize_window()
     yield driver
 
-
-
 class Auth:
 
     def __init__(self, driver):
         self.driver = driver
 
 
-    def test_standard_user(self):
+    def standard_user(self):
         self.driver.get("https://www.saucedemo.com/")
         user_name = WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "[name='user-name']")))
@@ -33,5 +31,3 @@ class Auth:
 
         self.driver.find_element(By.CSS_SELECTOR, "[name='login-button']").click()
 
-
-#Создать класс для страницы авторизации, который будет содержать методы для ввода логина и пароля, а также для нажатия кнопки входа.
