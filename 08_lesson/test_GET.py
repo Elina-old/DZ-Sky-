@@ -4,7 +4,7 @@ import pytest
 base_url = "https://ru.yougile.com/api-v2/"
 TOKEN = "BearerQgfiL35vqpmXgGX0JB-Wdl4nr6c3V2ujGvk26fI-GWukUKdtdBPUVHcSIGTNWq3C"
 
-@pytest.fixture(scope="module")
+@pytest.fixture
 def test_get_project_list():
     headers = {
         "Authorization": f"Bearer {TOKEN}",

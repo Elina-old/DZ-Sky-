@@ -1,14 +1,11 @@
-from http.client import responses
-
 import pytest
 import requests
 
 
-base_url = "https://ru.yougile.com/api-v2/"
-TOKEN = "Bearer BhaVtL8JwLLIjIZzlMev8rDLpS-hmQJTdHboQmTyS7ZLr6yh2KyLB3QYn5-3ikmZ"
+base_url = "https://ru.yougile.com/api-v2/projects"
+TOKEN = "BearerBhaVtL8JwLLIjIZzlMev8rDLpS-hmQJTdHboQmTyS7ZLr6yh2KyLB3QYn5-3ikmZ"
 
 @pytest.fixture(scope="module")
-
 def test_new_project():
     headers = {
           'Authorization': f'Bearer {TOKEN}',
