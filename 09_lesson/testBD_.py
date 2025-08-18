@@ -5,7 +5,8 @@ from wsproto import connection
 db_connection_string = "postgresql://postgres:8888@localhost:5433/Lesson_9"
 db = create_engine(db_connection_string)
 
-#Получение информации о таблицах
+
+# Получение информации о таблицах
 def test_db_connection():
     inspector = inspect(db)
     names = inspector.get_table_names()
@@ -25,12 +26,20 @@ def test_insert():
     rows = db.execute(sql, {'new_id': 888, 'new_title': 'Russian'})
     db.commit()
 
+    result = db.execute(text("SELECT * FROM subject"))
+    rows = result.mappings().all()
+    assert rows[16] == {'subject_id': 888, 'subject_title': 'Russian'}
+
 
 def test_update():
     db = create_engine(db_connection_string).connect()
     sql = text("UPDATE subject SET subject_title = :title WHERE subject_id = :id")
     rows = db.execute(sql, {'title': 'Amshen', "id": 888})
     db.commit()
+
+    result = db.execute(text("SELECT * FROM subject"))
+    rows = result.mappings().all()
+    assert rows[16] == {'subject_id': 888, 'subject_title': 'Amshen'}
 
 
 def test_delete():
@@ -39,6 +48,5 @@ def test_delete():
     rows = db.execute(sql, {'id': 888})
     db.commit()
 
-
-connection.close()
-
+    rows = db.execute(sql, {'id': 888})
+    assert rows.rowcount == 0
