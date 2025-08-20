@@ -5,8 +5,6 @@ import requests
 
 
 base_url = "https://ru.yougile.com/api-v2/"
-
-# Учётные данные (при желании переопределите через переменные окружения)
 LOGIN = os.getenv("YOUGILE_LOGIN", "etatulan262@xmail.ru")
 PASSWORD = os.getenv("YOUGILE_PASSWORD", "La_Gu_Na9")
 
@@ -106,3 +104,4 @@ def test_edit_project_negative(require_online, fresh_token: str):
     }
     resp = requests.put(base_url + "projects/" , json=new_project, headers=headers)
     assert resp.status_code == 404, f"Create project failed: {resp.status_code} {resp.text}"
+
