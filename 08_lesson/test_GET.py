@@ -66,6 +66,7 @@ def test_company_list(require_online):
     print(companies_id)
 
 
+
 #Список проектов
 def test_project_list(require_online, fresh_token):
     querystring = {"limit":"50","offset":"0","title":"Supro"}
@@ -75,6 +76,7 @@ def test_project_list(require_online, fresh_token):
     }
     resp = requests.get(base_url + "projects", json=querystring, headers=headers)
     assert resp.status_code == 201, f"Create project failed: {resp.status_code} {resp.text}"
+    assert resp.headers["Content-Type"] == "application/json"
 
 #Список сотрудников
 def test_users_list(require_online: str, fresh_token: str):

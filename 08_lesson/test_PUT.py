@@ -5,8 +5,8 @@ import requests
 
 
 base_url = "https://ru.yougile.com/api-v2/"
-LOGIN = os.getenv("YOUGILE_LOGIN", "etatulan262@xmail.ru")
-PASSWORD = os.getenv("YOUGILE_PASSWORD", "La_Gu_Na9")
+LOGIN = os.getenv("YOUGILE_LOGIN", "elina.tatulyan.88@mail.ru")
+PASSWORD = os.getenv("YOUGILE_PASSWORD", "Na_Gu_La7")
 
 
 @pytest.fixture(scope="session")
@@ -66,11 +66,11 @@ def test_company_list(require_online):
 def test_edit_project(require_online, fresh_token: str):
     new_project = {"title": "TEST"}
     headers = {
-       "Authorization": f"Bearer {fresh_token}",
+       "Authorization": "Bearer {fresh_token}",
        "Content-Type": "application/json",
     }
     resp = requests.post(base_url + "projects", json=new_project, headers=headers)
-    assert resp.status_code == 201, f"Create project failed: {resp.status_code} {resp.text}"
+    assert resp.status_code == 201, "Create project failed: {resp.status_code} {resp.text}"
     response_data = resp.json()
     project_id = response_data["id"]
     assert project_id, "Project id is empty"
@@ -80,8 +80,9 @@ def test_edit_project(require_online, fresh_token: str):
         "Authorization": f"Bearer {fresh_token}",
         "Content-Type": "application/json",
     }
-    resp = requests.put(base_url + "projects/" + project_id, json=new_project, headers=headers)
-    assert resp.status_code == 200, f"Create project failed: {resp.status_code} {resp.text}"
+    resp = requests.put(base_url + "projects/" + "project_id", json=new_project, headers=headers)
+    assert resp.status_code == 200, "Create project failed: {resp.status_code} {resp.text}"
+    assert resp.json()["description"] == new_project
 
 
  #Негативная проверка (запрос без id)
@@ -104,4 +105,5 @@ def test_edit_project_negative(require_online, fresh_token: str):
     }
     resp = requests.put(base_url + "projects/" , json=new_project, headers=headers)
     assert resp.status_code == 404, f"Create project failed: {resp.status_code} {resp.text}"
+
 

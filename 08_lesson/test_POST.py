@@ -1,6 +1,7 @@
-
 import os
 import socket
+from cgitb import text
+
 import pytest
 import requests
 
@@ -67,7 +68,7 @@ def test_company_list(require_online):
     print(companies)
 
 #Позитивная проверка
-def test_new_project(require_online, fresh_token):
+def test_new_project(require_online, fresh_token)-> str:
     new_project = {"title": "TEST_8"}
     headers = {
        "Authorization": f"Bearer {fresh_token}",
@@ -78,6 +79,7 @@ def test_new_project(require_online, fresh_token):
     response_data = resp.json()
     project_id = response_data["id"]
     assert project_id, "Project id is empty"
+    assert len(new_project) > 0
     # Вернём ID чтобы можно было при необходимости использовать его в других тестах
     return project_id
 
@@ -91,3 +93,5 @@ def test_new_project_negative(require_online, fresh_token: str):
     }
     resp = requests.post(base_url + "projects", json=new_project, headers=headers)
     assert resp.status_code == 400, f"Create project failed: {resp.status_code} {resp.text}"
+    assert resp.headers["Content-Type"] == "application/json"
+
