@@ -32,5 +32,3 @@ def test_shop(driver):
     page_cl_user.form_name()
     page_cl_user.res()
     assert int() == 58.29
-
-

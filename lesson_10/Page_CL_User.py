@@ -34,8 +34,3 @@ class Form:
     def res(self):
         res = self.driver.find_element(By.CSS_SELECTOR, "[data-test='total-label']").text
         assert int(res) == 58.29
-
-
-
-
-
