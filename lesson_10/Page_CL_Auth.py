@@ -1,11 +1,10 @@
+from telnetlib import EC
+
 import allure
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 @pytest.fixture(scope="module")
@@ -30,8 +29,9 @@ class Auth:
     @allure.step("Открывает страницу магазина")
     def standard_user(self):
         with allure.step(
-                "Устанавливается задержка для прогрузки всех элементов (задержка в секундах)"
-                " авторизация, введение имени"):
+                "Устанавливается задержка для прогрузки всех элементов "
+                "(задержка в секундах)" " авторизация, введение имени"
+        ):
             self.driver.get("https://www.saucedemo.com/")
         user_name = WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "[name='user-name']")))

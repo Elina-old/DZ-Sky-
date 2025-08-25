@@ -30,12 +30,22 @@ pytest --alluredir=./allure-results """
 Эта команда запустит все тесты и сохранит результат в директорию './allure-results'.
 
 ---
-## Инструкция по просмотру сформированного отчета Allure
+## Запуск тестов с генерацией Allure-отчёта
 
-1. После завершения тестов, чтобы просмотреть отчет, выполните команду:
-""" bash
-allure serve ./allure-results 
-"""
+1. Установите зависимости:
+```bash
+pip install -r requirements.txt
+```
+
+2. Запустите тест:
+```bash
+pytest testPage_Shop.py -v --alluredir=./allure-results
+```
+
+3. Просмотр отчёта:
+```bash
+allure serve ./allure-results
+```
 Эта команда запустит локальный сервер и откроет отчет в браузере.
 
 2. В отчете Allure вы увидите:

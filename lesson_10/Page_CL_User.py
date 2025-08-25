@@ -2,10 +2,6 @@ import allure
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
 
 
 @pytest.fixture(scope="module")
@@ -42,6 +38,14 @@ class Form:
         self.driver.find_element(By.CSS_SELECTOR, "[id='continue']").click()
 
     @allure.step("Получение итоговой суммы покупок, данные со страницы сайта.")
-    def res(self):
-        res = self.driver.find_element(By.CSS_SELECTOR, "[data-test='total-label']").text
-        assert int(res) == 58.29
+    def res(self)-> None:
+        """Извлекает итоговую сумму и проверяет её соответствие ожидаемой."""
+        res_text = self.driver.find_element(By.CSS_SELECTOR, "[data-test='total-label']").text
+        # Извлекаем число из текста "Total: $58.29"
+        total = float(res_text.split('$')[1])  # ← Правильное извлечение числа
+        assert total == 58.29
+
+        #res_text = self.driver.find_element(By.CSS_SELECTOR, "[data-test='total-label']").text
+        # Извлекаем число из текста "Total: $58.29"
+        #total = float(res_text.split('$')[1])  # ← Правильное извлечение числа
+        #assert total == 58.29
