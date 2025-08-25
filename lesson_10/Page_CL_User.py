@@ -44,8 +44,3 @@ class Form:
         # Извлекаем число из текста "Total: $58.29"
         total = float(res_text.split('$')[1])  # ← Правильное извлечение числа
         assert total == 58.29
-
-        #res_text = self.driver.find_element(By.CSS_SELECTOR, "[data-test='total-label']").text
-        # Извлекаем число из текста "Total: $58.29"
-        #total = float(res_text.split('$')[1])  # ← Правильное извлечение числа
-        #assert total == 58.29

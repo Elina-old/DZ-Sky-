@@ -1,5 +1,4 @@
-from telnetlib import EC
-
+from selenium.webdriver.support import expected_conditions as EC
 import allure
 import pytest
 from selenium import webdriver

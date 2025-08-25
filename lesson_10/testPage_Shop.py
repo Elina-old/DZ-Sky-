@@ -25,26 +25,26 @@ def setup_driver():  # ← Переименовали фикстуру
 def test_shop(setup_driver):  # ← Используем новое имя фикстуры
     driver = setup_driver  # ← Присваиваем объект драйвера переменной
 
-with allure.step("Инициализация страниц"):
-    page_cl_auth = Auth(driver)
-    page_cl_cartlink = Basket(driver)
-    page_cl_user = Form(driver)
-    page_cl_checkout = Checkout(driver)
+    with allure.step("Инициализация страниц"):
+       page_cl_auth = Auth(driver)
+       page_cl_cartlink = Basket(driver)
+       page_cl_user = Form(driver)
+       page_cl_checkout = Checkout(driver)
 
-with allure.step("Открытие страницы магазина"):
-    driver.get("https://www.saucedemo.com/")
+    with allure.step("Открытие страницы магазина"):
+      driver.get("https://www.saucedemo.com/")
 
-with allure.step("Авторизация клиента"):
-    page_cl_auth.standard_user()
+    with allure.step("Авторизация клиента"):
+       page_cl_auth.standard_user()
 
-with allure.step("Добавление товаров в корзину"):
-    page_cl_cartlink.clic()
+    with allure.step("Добавление товаров в корзину"):
+       page_cl_cartlink.clic()
 
-with allure.step("Переход к оформлению заказа"):
-    page_cl_checkout.check()
+    with allure.step("Переход к оформлению заказа"):
+       page_cl_checkout.check()
 
-with allure.step("Заполнение данных клиента"):
-    page_cl_user.form_name()
+    with allure.step("Заполнение данных клиента"):
+       page_cl_user.form_name()
 
-with allure.step("Проверка итоговой суммы"):
-    page_cl_user.res()
+    with allure.step("Проверка итоговой суммы"):
+       page_cl_user.res()
