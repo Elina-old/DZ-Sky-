@@ -34,4 +34,3 @@ def test_shop(driver):
     assert int() == 58.29
 
 
-

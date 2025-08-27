@@ -1,3 +1,12 @@
 pytest~=8.4.1
 selenium~=4.34.2
 webdriver-manager~=4.0.2
+
+requests~=2.32.4
+SQLAlchemy~=2.0.43
+wsproto~=1.2.0
+Pygments~=2.19.2
+
+requests~=2.32.4
+allure-python-commons~=2.15.0
+self~=2020.12.3

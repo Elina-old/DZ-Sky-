@@ -32,18 +32,10 @@ class Form:
         self.driver.find_element(By.CSS_SELECTOR, "[id='continue']").click()
 
     def res(self):
-        res = self.driver.find_element(By.CSS_SELECTOR, "[data-test='total-label'],").text
+        res = self.driver.find_element(By.CSS_SELECTOR, "[data-test='total-label']").text
         assert int(res) == 58.29
 
 
-
-
-
-
-        #total_cost = self.driver.find_element(By.CLASS_NAME, "summary_total_label").text
-        #total_cost_value = float(total_cost.split("$")[1])
-
-        #assert total_cost_value == 58.29, f"{total_cost_value}"
 
 
 
